@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>My Family</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="topContainer">
+                <div class="topMenu">
+                    <ul class="menu">
+                        <li class="menuItem"><a href="index.html">Home Page</a></li>
+                        <li class="menuItem"><a href="about.html">About me</a></li>
+                        <li class="menuItem"><a href="family.html">My family</a></li>
+                        <li class="menuItem"><a href="toochka.html">Toochka</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contentContainer">
+                <div class="familyHeaderText">Click on the photos</div>
+                <div class="familyContainer">
+                    <div class="card" id="costa" onclick=presentation("Costa")>
+                      <img src="img/costa.jpg" alt="Avatar" style="width:100%">
+                      <div class="container">
+                        <h4><b>Costa</b></h4>
+                        <p id="costaDescription">Father</p>
+                      </div>
+                    </div>
+                    <div class="card" id="darya" onclick=presentation("Darya")>
+                      <img src="img/darya.jpg" alt="Avatar" style="width:100%">
+                      <div class="container">
+                        <h4><b>Darya</b></h4>
+                        <p id="daryaDescription">Mother</p>
+                      </div>
+                    </div>
+                    <div class="card" id="diana" onclick=presentation("Diana")>
+                      <img src="img/diana.jpg" alt="Avatar" style="width:100%">
+                      <div class="container">
+                        <h4><b>Diana</b></h4>
+                        <p id="dianaDescription">Dauther</p>
+                      </div>
+                    </div>
+                    <div class="card" id="yuli" onclick=presentation("Yuli")>
+                      <img src="img/Yuli.jpg" alt="Avatar" style="width:100%">
+                      <div class="container">
+                        <h4><b>Yuli</b></h4>
+                        <p id="yuliDescription">Dauther</p>
+                      </div>
+                    </div>
+                </div>
+                <div id="familyButton">
+                  <a href="toochka.html">
+                    <button type="button" class="btn btn-primary">We have one more family member!</button>
+                  </a>
+                  <p></p>
+                </div>
+            </div>
+            <div class="footerContainer">
+                <footer>
+                    <p class="footerText">Copyright 2020 Costa</p>
+                </footer>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="js.js"></script>
+    </body>
+</html>

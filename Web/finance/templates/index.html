@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">TOTAL</th>
+        </tr>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row["symbol"] }}</td>
+                    <td>{{ row["company"] }}</td>
+                    <td>{{ row["shares"] }}</td>
+                    <td>${{ row["price"] }}</td>
+                    <td>${{ "{:,.2f}".format(row["price"]*row["shares"]) }}</td>
+                </tr>
+            {% endfor %}
+                <tr>
+                    <td>CASH</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>${{ "{:,.2f}".format(users_cash) }}</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="font-weight-bold">${{ "{:,.2f}".format(users_cash + total) }}</td>
+                </tr>
+
+    </table>
+{% endblock %}
