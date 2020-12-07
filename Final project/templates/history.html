@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Test Date</th>
+            <th scope="col">Ping</th>
+            <th scope="col">Download</th>
+            <th scope="col">Upload</th>
+            <th scope="col">Country</th>
+            <th scope="col">Name</th>
+            <th class="host" scope="col">Host</th>
+        </tr>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row["date"] }}</td>
+                    <td>{{ "{:.1f}".format(row["ping"]) }} ms</td>
+                    <td>{{ "{:.1f}".format(row["download"]) }} mb/s</td>
+                    <td>{{ "{:.1f}".format(row["upload"]) }} mb/s</td>
+                    <td>{{ row["country"] }}</td>
+                    <td>{{ row["name"] }}</td>
+                    <td class="host">{{ row["host"] }}</td>
+                </tr>
+            {% endfor %}
+    </table>
+    <div></div>
+    <a href="/">
+        <button id="button" class="btn btn-info">< Back</button>
+    </a>
+    
+{% endblock %}

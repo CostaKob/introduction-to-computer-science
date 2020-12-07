@@ -1,0 +1,33 @@
+body {
+    padding: 1em;
+    font-family: "Oswald";
+  }
+
+  .legend {
+    color: #333;
+  }
+  
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+main .form-control
+{
+    display: inline-block;
+    width: auto;
+}
+main
+{
+    overflow-x: auto;
+    text-align: center;
+}
+main img
+{
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+    .host {
+      display: none;
+    }
+  }

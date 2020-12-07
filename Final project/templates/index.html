@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+        <div id="header">
+            <h1>Press the button to test your speed!</h1>
+        </div>
+        
+        <div id="animation">
+            <img src="../static/images/load.gif"/>
+        </div>
+        <div class="container" style="padding-top: 5px">
+            <table class="table table-bordered">
+                <th>Download speed</th>
+                <th>Upload speed</th>
+                <th>Ping</th>
+                <tr>
+                    <td><i id="download">0.0</i><span> mb/s</span></td>
+                    <td><i id="upload">{{ "{:.1f}".format(0.0) }}</i><span> mb/s</span></td>
+                    <td><i id="ping">{{ "{:.1f}".format(0.0) }}</i><span> ms</span></td>
+                </tr>
+            </table>
+        </div>
+        <div id="additional_info">
+            <h4>Additional Information:</h4>
+            <p id="country"></p>
+            <p id="name"></p>
+            <p id="host"></p>
+        </div>
+        <button id="button" class="btn btn-info">Check Your Speed</button>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type=text/javascript>
+        $(function(){
+            $("#animation").hide()
+            $("#additional_info").hide()
+
+            $('#button').click(function(){
+                $("#button").attr("disabled", true);
+                $("#animation").show()
+                $("#additional_info").hide()
+
+                document.getElementById('header').innerHTML = "Please wait, testing now...";
+                setTimeout(function(){
+                    document.getElementById('header').innerHTML = "Testing Ping...";
+                    setTimeout(function(){
+                        document.getElementById('header').innerHTML = "Testing Download Speed...";
+                        setTimeout(function(){
+                            document.getElementById('header').innerHTML = "Testing Upload Speed...";
+                        }, 8000);
+                    }, 6000);
+                }, 3000);
+
+                document.getElementById('ping').innerHTML = 0.0;
+                document.getElementById('download').innerHTML = 0.0;
+                document.getElementById('upload').innerHTML = 0.0;
+
+                document.getElementById('button').textContent = "Testing now...";
+                
+                $.ajax({
+                    url: '/withspeed',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    success: function(data){
+                        
+                        $("#animation").hide();
+                        $("#additional_info").show()
+                        $("#button").attr("disabled", false);
+
+                        document.getElementById('header').innerHTML = "Results";
+
+                        document.getElementById('ping').innerHTML = data.ping.toFixed(1);
+                        document.getElementById('download').innerHTML = data.download.toFixed(1);
+                        document.getElementById('upload').innerHTML = data.upload.toFixed(1);
+
+                        document.getElementById('country').innerHTML = "Country: " + data.server.country;
+                        document.getElementById('name').innerHTML = "Name: " + data.server.name;
+                        document.getElementById('host').innerHTML = "Host: " + data.server.host;
+
+                        document.getElementById('button').textContent = "Test Again";
+                        
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                });
+            });
+        });
+        </script>
+{% endblock %}
